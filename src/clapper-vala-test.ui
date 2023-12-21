@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <requires lib="clapper-gtk" version="0.0"/>
+  <template class="ClapperValaTestAppWindow" parent="AdwApplicationWindow">
+    <property name="title" translatable="no">Clapper Vala Test</property>
+    <property name="default-width">800</property>
+    <property name="default-height">600</property>
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="AdwHeaderBar">
+            <property name="valign">start</property>
+            <property name="visible" bind-source="ClapperValaTestAppWindow" bind-property="fullscreened" bind-flags="invert-boolean"/>
+          </object>
+        </child>
+        <child>
+          <object class="ClapperGtkVideo" id="video">
+            <property name="vexpand">true</property>
+            <child type="fading-overlay">
+              <object class="ClapperGtkSimpleControls">
+                <property name="valign">end</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <property name="valign">end</property>
+            <property name="spacing">8</property>
+            <property name="margin-top">8</property>
+            <property name="margin-start">8</property>
+            <property name="margin-end">8</property>
+            <property name="margin-bottom">8</property>
+            <property name="visible" bind-source="ClapperValaTestAppWindow" bind-property="fullscreened" bind-flags="invert-boolean"/>
+            <child>
+              <object class="GtkEntry" id="text_entry">
+                <property name="valign">center</property>
+                <property name="placeholder-text">Insert URI here</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton">
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="label">OPEN</property>
+                <signal name="clicked" handler="open_clicked_cb"/>
+                <style>
+                  <class name="pill"/>
+                  <class name="suggested-action"/>
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>
