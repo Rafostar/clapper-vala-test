@@ -1,0 +1,40 @@
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: "0 0 * * *"
+name: "Flatpak"
+jobs:
+  flatpak:
+    name: "Flatpak"
+    runs-on: ubuntu-latest
+    timeout-minutes: 600
+    container:
+      image: bilelmoussaoui/flatpak-github-actions:gnome-44
+      options: --privileged
+    strategy:
+      matrix:
+        arch: [x86_64, aarch64]
+      fail-fast: false
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install Docker
+      run: |
+        dnf -y install docker
+    - name: Setup QEMU
+      id: qemu
+      uses: docker/setup-qemu-action@v3
+      with:
+        platforms: arm64
+    - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v6
+      name: "Build"
+      with:
+        bundle: com.github.rafostar.ClapperValaTest.flatpak
+        manifest-path: com.github.rafostar.ClapperValaTest.json
+        cache-key: flatpak-builder-${{ github.sha }}
+        arch: ${{ matrix.arch }}
