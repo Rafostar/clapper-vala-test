@@ -1,0 +1,4 @@
+build/
+install/
+builddir/
+.flatpak-builder/
