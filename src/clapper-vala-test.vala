@@ -31,4 +31,10 @@ public class ClapperValaTestAppWindow: Adw.ApplicationWindow {
   private void open_clicked_cb (Gtk.Button source) {
     open_media_uri (text_entry.buffer.text);
   }
+
+  [GtkCallback]
+  private void toggle_fullscreen_cb (ClapperGtk.Video video) {
+    // We just invert boolean here, rest is handled in .ui file
+    this.fullscreened ^= true;
+  }
 }

@@ -19,6 +19,7 @@
         <child>
           <object class="ClapperGtkVideo" id="video">
             <property name="vexpand">true</property>
+            <signal name="toggle-fullscreen" handler="toggle_fullscreen_cb"/>
             <child type="fading-overlay">
               <object class="ClapperGtkSimpleControls">
                 <property name="valign">end</property>
