@@ -1,8 +1,10 @@
+extra_vala_args = []
+
 deps = [
-  dependency('clapper-0.0', version: '>= 0.5.2', required: true),
-  dependency('clapper-gtk-0.0', version: '>= 0.5.2', required: true),
-  dependency('gtk4', version: '>= 4.10.0', required: true),
-  dependency('libadwaita-1', version: '>= 1.0.0', required: true),
+  clapper_dep,
+  clapper_gtk_dep,
+  gtk4_dep,
+  libadwaita_dep
 ]
 
 resources = gnome.compile_resources(
@@ -17,9 +19,16 @@ sources = [
   resources
 ]
 
+clapper_features = clapper_dep.get_variable('features').split()
+
+if (clapper_features.contains('mpris'))
+  extra_vala_args += ['-D', 'HAVE_MPRIS']
+endif
+
 executable(
   meson.project_name(),
   sources,
   dependencies: deps,
+  vala_args: extra_vala_args,
   install: true,
 )

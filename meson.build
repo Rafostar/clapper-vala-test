@@ -9,4 +9,9 @@ project('clapper-vala-test', ['c', 'vala'],
 
 gnome = import('gnome')
 
+clapper_dep = dependency('clapper-0.0', required: true)
+clapper_gtk_dep = dependency('clapper-gtk-0.0', required: true)
+gtk4_dep = dependency('gtk4', required: true)
+libadwaita_dep = dependency('libadwaita-1', version: '>= 1.0.0', required: true)
+
 subdir('src')

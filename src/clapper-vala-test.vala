@@ -6,13 +6,13 @@ public class ClapperValaTestAppWindow: Adw.ApplicationWindow {
   public ClapperValaTestAppWindow (Adw.Application app) {
     Object (application: app);
 
-    // Lets add MPRIS functionality if OS supports it
-    if (Clapper.HAVE_MPRIS) {
-      var mpris = new Clapper.Mpris (
-        "org.mpris.MediaPlayer2.ClapperValaTest",
-        "Clapper Vala Test", null);
-      video.player.add_feature (mpris);
-    }
+    // Lets add MPRIS functionality if Clapper was built with it
+#if HAVE_MPRIS
+    var mpris = new Clapper.Mpris (
+      "org.mpris.MediaPlayer2.ClapperValaTest",
+      "Clapper Vala Test", null);
+    video.player.add_feature (mpris);
+#endif
   }
 
   private void open_media_uri (string uri) {
@@ -23,7 +23,7 @@ public class ClapperValaTestAppWindow: Adw.ApplicationWindow {
     video.player.queue.add_item (item);
     video.player.queue.select_item (item);
 
-    // If player was not already playing, play it
+    // Start playback if player was not already playing
     video.player.play ();
   }
 
