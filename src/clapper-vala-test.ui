@@ -21,6 +21,11 @@
             <property name="vexpand">true</property>
             <signal name="toggle-fullscreen" handler="toggle_fullscreen_cb"/>
             <child type="fading-overlay">
+              <object class="ClapperGtkTitleHeader">
+                <property name="valign">start</property>
+              </object>
+            </child>
+            <child type="fading-overlay">
               <object class="ClapperGtkSimpleControls">
                 <property name="valign">end</property>
               </object>
