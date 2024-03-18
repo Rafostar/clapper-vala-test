@@ -14,6 +14,9 @@ public class ClapperValaTestAppWindow: Adw.ApplicationWindow {
     video.player.add_feature (mpris);
 #endif
 
+    // Preserve audio pitch on non 1.0x speed by using "scaletempo" as audio filter
+    video.player.audio_filter = Gst.ElementFactory.make ("scaletempo", null);
+
     // Autoplay selected item
     video.player.autoplay = true;
   }
