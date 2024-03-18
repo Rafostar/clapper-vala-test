@@ -4,7 +4,7 @@
   <requires lib="libadwaita" version="1.0"/>
   <requires lib="clapper-gtk" version="0.0"/>
   <template class="ClapperValaTestAppWindow" parent="AdwApplicationWindow">
-    <property name="title" translatable="no">Clapper Vala Test</property>
+    <property name="title" bind-source="title_header" bind-property="current-title" bind-flags="sync-create"/>
     <property name="default-width">800</property>
     <property name="default-height">600</property>
     <child>
@@ -22,8 +22,9 @@
             <property name="auto-inhibit">true</property>
             <signal name="toggle-fullscreen" handler="toggle_fullscreen_cb"/>
             <child type="fading-overlay">
-              <object class="ClapperGtkTitleHeader">
+              <object class="ClapperGtkTitleHeader" id="title_header">
                 <property name="valign">start</property>
+                <property name="visible" bind-source="ClapperValaTestAppWindow" bind-property="fullscreened" bind-flags="sync-create"/>
               </object>
             </child>
             <child type="fading-overlay">
