@@ -13,6 +13,9 @@ public class ClapperValaTestAppWindow: Adw.ApplicationWindow {
       "Clapper Vala Test", null);
     video.player.add_feature (mpris);
 #endif
+
+    // Autoplay selected item
+    video.player.autoplay = true;
   }
 
   private void open_media_uri (string uri) {
@@ -22,9 +25,6 @@ public class ClapperValaTestAppWindow: Adw.ApplicationWindow {
     // Add item to queue and select it for playback now
     video.player.queue.add_item (item);
     video.player.queue.select_item (item);
-
-    // Start playback if player was not already playing
-    video.player.play ();
   }
 
   [GtkCallback]
