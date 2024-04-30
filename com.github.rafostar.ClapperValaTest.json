@@ -21,13 +21,8 @@
         "--device=dri",
         "--socket=pulseaudio",
         "--share=network",
-        "--device=all",
-        "--filesystem=xdg-run/pipewire-0:ro",
-        "--filesystem=xdg-run/gvfsd",
         "--own-name=org.mpris.MediaPlayer2.ClapperValaTest",
-        "--talk-name=org.gtk.vfs.*",
-        "--env=GST_PLUGIN_SYSTEM_PATH=/app/lib/gstreamer-1.0",
-        "--env=GST_PLUGIN_FEATURE_RANK=vah264dec:MAX,vah265dec:MAX,vavp9dec:MAX,vaav1dec:MAX"
+        "--env=GST_PLUGIN_SYSTEM_PATH=/app/lib/gstreamer-1.0"
     ],
     "modules": [
         "flatpak/gstreamer.json",
