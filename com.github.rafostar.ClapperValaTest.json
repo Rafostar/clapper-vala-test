@@ -10,6 +10,15 @@
             "add-ld-path": ".",
             "no-autodownload": false,
             "autodelete": false
+        },
+        "io.github.rafostar.Clapper.Enhancers": {
+            "versions": "stable;test;master",
+            "directory": "extensions/clapper/enhancers",
+            "merge-dirs": "plugins;python",
+            "subdirectories": true,
+            "add-ld-path": "lib",
+            "no-autodownload": false,
+            "autodelete": false
         }
     },
     "command": "clapper-vala-test",
@@ -21,7 +30,9 @@
         "--device=dri",
         "--socket=pulseaudio",
         "--share=network",
-        "--own-name=org.mpris.MediaPlayer2.ClapperValaTest"
+        "--own-name=org.mpris.MediaPlayer2.ClapperValaTest",
+        "--env=CLAPPER_ENHANCERS_PATH=/app/extensions/clapper/enhancers/plugins",
+        "--env=PYTHONPATH=/app/extensions/clapper/enhancers/python/site-packages"
     ],
     "modules": [
         "flatpak/libpeas.json",
@@ -38,6 +49,7 @@
         }
     ],
     "cleanup-commands": [
-        "mkdir -p /app/lib/ffmpeg"
+        "mkdir -p /app/lib/ffmpeg",
+        "mkdir -p /app/extensions/clapper/enhancers"
     ]
 }
