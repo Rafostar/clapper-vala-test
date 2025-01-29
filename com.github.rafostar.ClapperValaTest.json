@@ -1,11 +1,11 @@
 {
     "app-id": "com.github.rafostar.ClapperValaTest",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "45",
+    "runtime-version": "47",
     "sdk": "org.gnome.Sdk",
     "add-extensions": {
         "org.freedesktop.Platform.ffmpeg-full": {
-            "version": "23.08",
+            "version": "24.08",
             "directory": "lib/ffmpeg",
             "add-ld-path": ".",
             "no-autodownload": false,
@@ -21,11 +21,9 @@
         "--device=dri",
         "--socket=pulseaudio",
         "--share=network",
-        "--own-name=org.mpris.MediaPlayer2.ClapperValaTest",
-        "--env=GST_PLUGIN_SYSTEM_PATH=/app/lib/gstreamer-1.0"
+        "--own-name=org.mpris.MediaPlayer2.ClapperValaTest"
     ],
     "modules": [
-        "flatpak/gstreamer.json",
         "flatpak/gtuber.json",
         "flatpak/clapper.json",
         {
