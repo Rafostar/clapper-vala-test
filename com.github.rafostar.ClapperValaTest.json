@@ -24,6 +24,7 @@
         "--own-name=org.mpris.MediaPlayer2.ClapperValaTest"
     ],
     "modules": [
+        "flatpak/libpeas.json",
         "flatpak/clapper.json",
         {
             "name": "clapper-vala-test",
